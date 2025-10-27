@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ko7uwc0hxdjs"]
+[gd_scene load_steps=10 format=3 uid="uid://ko7uwc0hxdjs"]
 
 [ext_resource type="Texture2D" uid="uid://dtgfy8o00twv2" path="res://Assets/UI/Ingame/HeartsAllEmpty.png" id="1_55em2"]
+[ext_resource type="Script" uid="uid://bfngkhj3w1544" path="res://PlayerData/ui.gd" id="1_ujfn7"]
 [ext_resource type="Texture2D" uid="uid://ce8yv8asxrpi5" path="res://Assets/UI/Ingame/HeartsAllFull.png" id="2_ujfn7"]
 [ext_resource type="Texture2D" uid="uid://cbwhh1ektr563" path="res://Assets/UI/Ingame/DownArrow.png" id="3_m1h2j"]
 [ext_resource type="Texture2D" uid="uid://bxuh4x7u6k4j7" path="res://Assets/UI/Ingame/UpArrow.png" id="4_kyysl"]
@@ -14,6 +15,7 @@ font = ExtResource("7_6jj85")
 font_color = Color(0.18039216, 0.13333334, 0.18431373, 1)
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_ujfn7")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 offset_left = 20.0
@@ -65,3 +67,20 @@ text = "Score: 100"
 label_settings = SubResource("LabelSettings_gmdtp")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DebugLabel" type="Label" parent="."]
+self_modulate = Color(0.18039216, 0.13333334, 0.18431373, 1)
+offset_top = 83.0
+offset_right = 384.0
+offset_bottom = 99.0
+scale = Vector2(4.5, 4.5)
+text = "Score: 100"
+label_settings = SubResource("LabelSettings_gmdtp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
