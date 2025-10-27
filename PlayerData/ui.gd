@@ -10,7 +10,7 @@ func _ready() -> void:
 	else:
 		$Arrows.hide()
 	
-	$DebugLabel.text = str(OS.get_name()) + " : " + str(DisplayServer.screen_get_size()) + " : " + str(DisplayServer.is_touchscreen_available())
+	# $DebugLabel.text = str(OS.get_name()) + " : " + str(DisplayServer.screen_get_size()) + " : " + str(DisplayServer.is_touchscreen_available())
 
 func _on_timer_timeout() -> void:
 	var screen_size = DisplayServer.screen_get_size()
@@ -20,4 +20,4 @@ func _on_timer_timeout() -> void:
 	else:
 		$Arrows.hide()
 	
-	$DebugLabel.text = str(OS.get_name()) + " : " + str(DisplayServer.screen_get_size()) + " : " + str(DisplayServer.is_touchscreen_available())
+	# $DebugLabel.text = str(OS.get_name()) + " : " + str(DisplayServer.screen_get_size()) + " : " + str(DisplayServer.is_touchscreen_available())
