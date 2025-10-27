@@ -27,8 +27,8 @@ texture_under = ExtResource("1_55em2")
 texture_progress = ExtResource("2_ujfn7")
 
 [node name="Arrows" type="Node2D" parent="."]
-position = Vector2(1462.5, 775.5)
-scale = Vector2(7.5, 7.5)
+position = Vector2(1370, 730.00006)
+scale = Vector2(11.25, 11.25)
 
 [node name="Down" type="TextureButton" parent="Arrows"]
 offset_left = -8.0
