@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://l5ds0nveac8p"]
+
+[ext_resource type="Texture2D" uid="uid://dk1iwxc7cfd66" path="res://Assets/Entities/PlayerIdle.png" id="1_l66eh"]
+[ext_resource type="Script" uid="uid://c67o0qf0oi3" path="res://PlayerData/player.gd" id="1_lxgw6"]
+[ext_resource type="PackedScene" uid="uid://ko7uwc0hxdjs" path="res://PlayerData/ui.tscn" id="3_dqcya"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
+size = Vector2(11, 18)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_lxgw6")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2poj3")
+
+[node name="EnemieHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="EnemieHitbox"]
+shape = SubResource("RectangleShape2D_2poj3")
+
+[node name="CollectableHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Hitbox" type="CollisionShape2D" parent="CollectableHitbox"]
+shape = SubResource("RectangleShape2D_2poj3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_l66eh")
+
+[node name="UI" parent="." instance=ExtResource("3_dqcya")]

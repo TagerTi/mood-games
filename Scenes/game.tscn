@@ -1,0 +1,316 @@
+[gd_scene load_steps=15 format=3 uid="uid://ttn2pvgurcq7"]
+
+[ext_resource type="Script" uid="uid://d058d843gq2is" path="res://Scenes/game.gd" id="1_1l0tm"]
+[ext_resource type="Texture2D" uid="uid://rck37djdp18n" path="res://Assets/UI/MainMenu/SmileyGood.png" id="2_1l0tm"]
+[ext_resource type="Texture2D" uid="uid://bprhuxqgkdqo7" path="res://Assets/Map/WhiteBG.png" id="2_rfjv2"]
+[ext_resource type="Texture2D" uid="uid://dyldi6coucxpb" path="res://Assets/UI/MainMenu/SmileyBetter.png" id="2_rku1e"]
+[ext_resource type="Texture2D" uid="uid://boxvwpyna3cye" path="res://Assets/UI/MainMenu/SmileyMid.png" id="3_v158k"]
+[ext_resource type="Texture2D" uid="uid://btwjwmvr1o87e" path="res://Assets/UI/MainMenu/SmileyBad.png" id="4_h4fw4"]
+[ext_resource type="Texture2D" uid="uid://d1x03j31druen" path="res://Assets/UI/MainMenu/SmileyWorseThick.png" id="5_ldgsr"]
+[ext_resource type="FontFile" uid="uid://bdwskevh3ewa3" path="res://Assets/UI/BoldPixels.otf" id="6_o5yvi"]
+[ext_resource type="Texture2D" uid="uid://w6haiqvxofm5" path="res://Assets/UI/MainMenu/Weather.png" id="8_o5yvi"]
+[ext_resource type="Texture2D" uid="uid://ljtebie5fy5i" path="res://Assets/UI/Ingame/Bug.png" id="9_o5yvi"]
+[ext_resource type="Texture2D" uid="uid://bjtaebqjbt3vt" path="res://Assets/UI/MainMenu/NoDesire.png" id="10_rku1e"]
+[ext_resource type="Texture2D" uid="uid://dbntucoq2evj1" path="res://Assets/UI/MainMenu/Traffic.png" id="11_o5yvi"]
+[ext_resource type="Texture2D" uid="uid://347uk6xte0uj" path="res://Assets/UI/MainMenu/Back.png" id="12_rku1e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rku1e"]
+line_spacing = -4.0
+font = ExtResource("6_o5yvi")
+font_color = Color(0.18039216, 0.13333334, 0.18431373, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_1l0tm")
+
+[node name="Others" type="Node2D" parent="."]
+
+[node name="BackTimer" type="Timer" parent="Others"]
+wait_time = 20.0
+one_shot = true
+
+[node name="Camera" type="Camera2D" parent="Others"]
+position = Vector2(192, 108)
+zoom = Vector2(6, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Others"]
+z_index = -1
+texture = ExtResource("2_rfjv2")
+centered = false
+
+[node name="UpdateTimer" type="Timer" parent="Others"]
+wait_time = 10.0
+autostart = true
+
+[node name="MoodChoice" type="Node2D" parent="."]
+
+[node name="MoodOptions" type="GridContainer" parent="MoodChoice"]
+offset_left = 104.0
+offset_top = 92.0
+offset_right = 280.0
+offset_bottom = 124.0
+columns = 5
+
+[node name="Best" type="Panel" parent="MoodChoice/MoodOptions"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="BestButton" type="TextureButton" parent="MoodChoice/MoodOptions/Best"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("2_rku1e")
+
+[node name="Good" type="Panel" parent="MoodChoice/MoodOptions"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="GoodButton" type="TextureButton" parent="MoodChoice/MoodOptions/Good"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("2_1l0tm")
+
+[node name="Mid" type="Panel" parent="MoodChoice/MoodOptions"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="MidButton" type="TextureButton" parent="MoodChoice/MoodOptions/Mid"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("3_v158k")
+
+[node name="Bad" type="Panel" parent="MoodChoice/MoodOptions"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="BadButton" type="TextureButton" parent="MoodChoice/MoodOptions/Bad"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("4_h4fw4")
+
+[node name="Worse" type="Panel" parent="MoodChoice/MoodOptions"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="WorseButton" type="TextureButton" parent="MoodChoice/MoodOptions/Worse"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("5_ldgsr")
+
+[node name="Label" type="Label" parent="MoodChoice"]
+offset_top = 76.0
+offset_right = 384.0
+offset_bottom = 92.0
+text = "Wie geht es dir heute?"
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReasonChoice" type="Node2D" parent="."]
+
+[node name="MoodOptions" type="GridContainer" parent="ReasonChoice"]
+offset_left = 140.0
+offset_top = 81.5
+offset_right = 244.0
+offset_bottom = 134.5
+columns = 4
+
+[node name="Rain" type="Panel" parent="ReasonChoice/MoodOptions"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="ReasonChoice/MoodOptions/Rain"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RainButton" type="TextureButton" parent="ReasonChoice/MoodOptions/Rain/Control"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("8_o5yvi")
+
+[node name="Name" type="Label" parent="ReasonChoice/MoodOptions/Rain/Control"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 51.0
+offset_bottom = 52.0
+scale = Vector2(0.65, 0.65)
+text = "Weather"
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="ReasonChoice/MoodOptions/Rain/Control"]
+layout_mode = 0
+offset_top = 44.0
+offset_right = 66.3
+offset_bottom = 60.0
+scale = Vector2(0.5, 0.5)
+text = "0000"
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bug" type="Panel" parent="ReasonChoice/MoodOptions"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="ReasonChoice/MoodOptions/Bug"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BugButton" type="TextureButton" parent="ReasonChoice/MoodOptions/Bug/Control"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("9_o5yvi")
+
+[node name="Name" type="Label" parent="ReasonChoice/MoodOptions/Bug/Control"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 51.0
+offset_bottom = 52.0
+scale = Vector2(0.65, 0.65)
+text = "Bugs"
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="ReasonChoice/MoodOptions/Bug/Control"]
+layout_mode = 0
+offset_top = 44.0
+offset_right = 66.3
+offset_bottom = 60.0
+scale = Vector2(0.5, 0.5)
+text = "0000"
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NoDesire" type="Panel" parent="ReasonChoice/MoodOptions"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="ReasonChoice/MoodOptions/NoDesire"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NoDesireButton" type="TextureButton" parent="ReasonChoice/MoodOptions/NoDesire/Control"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("10_rku1e")
+
+[node name="Label" type="Label" parent="ReasonChoice/MoodOptions/NoDesire/Control"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 51.0
+offset_bottom = 52.0
+scale = Vector2(0.65, 0.65)
+text = "No 
+Desire"
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="ReasonChoice/MoodOptions/NoDesire/Control"]
+layout_mode = 0
+offset_top = 44.0
+offset_right = 66.3
+offset_bottom = 60.0
+scale = Vector2(0.5, 0.5)
+text = "0000"
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Traffic" type="Panel" parent="ReasonChoice/MoodOptions"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="ReasonChoice/MoodOptions/Traffic"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TrafficButton" type="TextureButton" parent="ReasonChoice/MoodOptions/Traffic/Control"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("11_o5yvi")
+
+[node name="Label" type="Label" parent="ReasonChoice/MoodOptions/Traffic/Control"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 51.0
+offset_bottom = 52.0
+scale = Vector2(0.65, 0.65)
+text = "Traffic"
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="ReasonChoice/MoodOptions/Traffic/Control"]
+layout_mode = 0
+offset_top = 44.0
+offset_right = 66.3
+offset_bottom = 60.0
+scale = Vector2(0.5, 0.5)
+text = "0000"
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="ReasonChoice"]
+offset_top = 65.5
+offset_right = 384.0
+offset_bottom = 81.5
+text = "Why?"
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="TextureButton" parent="ReasonChoice"]
+offset_left = 58.0
+offset_top = 37.0
+offset_right = 90.0
+offset_bottom = 69.0
+texture_normal = ExtResource("12_rku1e")
+
+[node name="ReturnIn" type="Label" parent="ReasonChoice/Back"]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 51.0
+offset_bottom = 49.0
+scale = Vector2(0.65, 0.65)
+text = "in: 60s"
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Others/BackTimer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="MoodChoice/MoodOptions/Best/BestButton" to="." method="_best_pressed"]
+[connection signal="pressed" from="MoodChoice/MoodOptions/Good/GoodButton" to="." method="_good_pressed"]
+[connection signal="pressed" from="MoodChoice/MoodOptions/Mid/MidButton" to="." method="_mid_pressed"]
+[connection signal="pressed" from="MoodChoice/MoodOptions/Bad/BadButton" to="." method="_bad_pressed"]
+[connection signal="pressed" from="MoodChoice/MoodOptions/Worse/WorseButton" to="." method="_worse_pressed"]
+[connection signal="pressed" from="ReasonChoice/MoodOptions/Rain/Control/RainButton" to="." method="_rain_pressed"]
+[connection signal="pressed" from="ReasonChoice/MoodOptions/Bug/Control/BugButton" to="." method="_on_bug_button_pressed"]
+[connection signal="pressed" from="ReasonChoice/MoodOptions/Traffic/Control/TrafficButton" to="." method="_on_traffic_button_pressed"]
+[connection signal="pressed" from="ReasonChoice/Back" to="." method="_on_back_pressed"]

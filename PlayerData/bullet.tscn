@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://db76cmov2nysx"]
+
+[ext_resource type="Script" uid="uid://mm32gj6gxnt0" path="res://PlayerData/bullet.gd" id="1_37u1f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2qrt"]
+size = Vector2(5, 3)
+
+[sub_resource type="QuadMesh" id="QuadMesh_37u1f"]
+size = Vector2(4, 2)
+
+[node name="Bullet" type="Area2D" groups=["immune"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_37u1f")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i2qrt")
+
+[node name="Mesh" type="MeshInstance2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+mesh = SubResource("QuadMesh_37u1f")

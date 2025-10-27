@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cexlb7opg3llh"]
+
+[ext_resource type="Script" uid="uid://bn57m3clln2a7" path="res://PlayerData/lev_player.gd" id="1_s41u3"]
+[ext_resource type="Texture2D" uid="uid://dk1iwxc7cfd66" path="res://Assets/Entities/PlayerIdle.png" id="1_vpin6"]
+[ext_resource type="Texture2D" uid="uid://csy30obtcn2bt" path="res://Assets/Entities/Gun.png" id="2_s41u3"]
+[ext_resource type="PackedScene" uid="uid://ko7uwc0hxdjs" path="res://PlayerData/ui.tscn" id="4_2u2r6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mr6b4"]
+size = Vector2(11, 18)
+
+[node name="LevPlayer" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_s41u3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_vpin6")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+
+[node name="GunAnchor" type="Node2D" parent="."]
+
+[node name="Gun" type="Sprite2D" parent="GunAnchor"]
+position = Vector2(9, 2)
+texture = ExtResource("2_s41u3")
+
+[node name="StartPos" type="Marker2D" parent="GunAnchor"]
+position = Vector2(16, 0)
+
+[node name="TargetPos" type="Marker2D" parent="GunAnchor"]
+position = Vector2(17, 0)
+
+[node name="EnemieHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="EnemieHitbox"]
+shape = SubResource("RectangleShape2D_mr6b4")
+
+[node name="CollectableHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Hitbox" type="CollisionShape2D" parent="CollectableHitbox"]
+shape = SubResource("RectangleShape2D_mr6b4")
+
+[node name="UI" parent="." instance=ExtResource("4_2u2r6")]

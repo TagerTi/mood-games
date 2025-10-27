@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://le3b6vqj6h86"]
+
+[ext_resource type="Script" uid="uid://ddj8rdm8bb74j" path="res://Scenes/bug_game.gd" id="1_r60nn"]
+[ext_resource type="PackedScene" uid="uid://cexlb7opg3llh" path="res://PlayerData/lev_player.tscn" id="2_7qork"]
+[ext_resource type="Texture2D" uid="uid://t0dx04kj76ft" path="res://Assets/Map/OfficeGround.png" id="2_r60nn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r60nn"]
+size = Vector2(590.75, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryiwa"]
+size = Vector2(20, 351)
+
+[node name="BugGame" type="Node2D"]
+script = ExtResource("1_r60nn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_r60nn")
+centered = false
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(288, 162)
+zoom = Vector2(3, 3)
+
+[node name="LevPlayer" parent="." instance=ExtResource("2_7qork")]
+position = Vector2(288, 162)
+
+[node name="GroundTemp" type="StaticBody2D" parent="."]
+position = Vector2(1, 217)
+
+[node name="HitboxDown" type="CollisionShape2D" parent="GroundTemp"]
+position = Vector2(288, 116)
+shape = SubResource("RectangleShape2D_r60nn")
+
+[node name="HitboxUp" type="CollisionShape2D" parent="GroundTemp"]
+position = Vector2(292, -228)
+shape = SubResource("RectangleShape2D_r60nn")
+
+[node name="HitboxLeft" type="CollisionShape2D" parent="GroundTemp"]
+position = Vector2(-11, -53.5)
+shape = SubResource("RectangleShape2D_ryiwa")
+
+[node name="HitboxRight" type="CollisionShape2D" parent="GroundTemp"]
+position = Vector2(585, -55)
+shape = SubResource("RectangleShape2D_ryiwa")
+
+[node name="Bugs" type="Node2D" parent="."]

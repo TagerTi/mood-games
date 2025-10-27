@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://4wojr5bxnn0g"]
+
+[ext_resource type="Script" uid="uid://hm6wnsgjq8ph" path="res://Scenes/traffic_game.gd" id="1_eo578"]
+[ext_resource type="PackedScene" uid="uid://cut0lpmxp7hbu" path="res://PlayerData/player_car.tscn" id="1_vkio0"]
+[ext_resource type="Texture2D" uid="uid://cbroa1uwg0lbh" path="res://Assets/Map/StreetClear.png" id="3_60wyu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkio0"]
+size = Vector2(228, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo578"]
+size = Vector2(20, 351)
+
+[node name="TrafficGame" type="Node2D"]
+script = ExtResource("1_eo578")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_60wyu")
+centered = false
+
+[node name="PlayerCar" parent="." instance=ExtResource("1_vkio0")]
+position = Vector2(285, 244)
+motion_mode = 1
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(288, 162)
+zoom = Vector2(3, 3)
+
+[node name="GroundTemp" type="StaticBody2D" parent="."]
+position = Vector2(1, 217)
+
+[node name="HitboxDown" type="CollisionShape2D" parent="GroundTemp"]
+position = Vector2(294, 117)
+shape = SubResource("RectangleShape2D_vkio0")
+
+[node name="HitboxUp" type="CollisionShape2D" parent="GroundTemp"]
+position = Vector2(294, -227)
+shape = SubResource("RectangleShape2D_vkio0")
+
+[node name="HitboxLeft" type="CollisionShape2D" parent="GroundTemp"]
+position = Vector2(190, -54)
+shape = SubResource("RectangleShape2D_eo578")
+
+[node name="HitboxRight" type="CollisionShape2D" parent="GroundTemp"]
+position = Vector2(398, -55)
+shape = SubResource("RectangleShape2D_eo578")
+
+[node name="Cars" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

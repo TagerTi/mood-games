@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7sotphhol08b"]
+
+[ext_resource type="Script" uid="uid://b3l1oldx2jjpt" path="res://Scenes/weather_game.gd" id="1_lxh4c"]
+[ext_resource type="PackedScene" uid="uid://l5ds0nveac8p" path="res://PlayerData/player.tscn" id="1_rsexj"]
+[ext_resource type="Texture2D" uid="uid://bprhuxqgkdqo7" path="res://Assets/Map/WhiteBG.png" id="2_7qmgv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxh4c"]
+size = Vector2(353.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qmgv"]
+size = Vector2(20, 163)
+
+[node name="Weather" type="Node2D"]
+script = ExtResource("1_lxh4c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-33, -19)
+scale = Vector2(0.6440972, 0.70679015)
+texture = ExtResource("2_7qmgv")
+centered = false
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(144, 81)
+zoom = Vector2(6, 6)
+limit_left = 0
+limit_top = 0
+
+[node name="Player" parent="." instance=ExtResource("1_rsexj")]
+position = Vector2(130, 122)
+
+[node name="GroundTemp" type="StaticBody2D" parent="."]
+position = Vector2(1, 217)
+
+[node name="Hitbox" type="CollisionShape2D" parent="GroundTemp"]
+position = Vector2(146.25, -45)
+shape = SubResource("RectangleShape2D_lxh4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundTemp"]
+position = Vector2(-11, -135.5)
+shape = SubResource("RectangleShape2D_7qmgv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GroundTemp"]
+position = Vector2(297, -136)
+shape = SubResource("RectangleShape2D_7qmgv")
+
+[node name="Drops" type="Node2D" parent="."]

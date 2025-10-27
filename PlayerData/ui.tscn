@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://ko7uwc0hxdjs"]
+
+[ext_resource type="Texture2D" uid="uid://dtgfy8o00twv2" path="res://Assets/UI/Ingame/HeartsAllEmpty.png" id="1_55em2"]
+[ext_resource type="Texture2D" uid="uid://ce8yv8asxrpi5" path="res://Assets/UI/Ingame/HeartsAllFull.png" id="2_ujfn7"]
+[ext_resource type="Texture2D" uid="uid://cbwhh1ektr563" path="res://Assets/UI/Ingame/DownArrow.png" id="3_m1h2j"]
+[ext_resource type="Texture2D" uid="uid://bxuh4x7u6k4j7" path="res://Assets/UI/Ingame/UpArrow.png" id="4_kyysl"]
+[ext_resource type="Texture2D" uid="uid://dnvtnjpwfq3vn" path="res://Assets/UI/Ingame/RightArrow.png" id="5_xv5qh"]
+[ext_resource type="Texture2D" uid="uid://c2uf366mx54x7" path="res://Assets/UI/Ingame/LeftArrow.png" id="6_sff56"]
+[ext_resource type="FontFile" uid="uid://bdwskevh3ewa3" path="res://Assets/UI/BoldPixels.otf" id="7_6jj85"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gmdtp"]
+line_spacing = -4.0
+font = ExtResource("7_6jj85")
+font_color = Color(0.18039216, 0.13333334, 0.18431373, 1)
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 70.0
+offset_bottom = 36.0
+scale = Vector2(6, 6)
+max_value = 3.0
+value = 3.0
+texture_under = ExtResource("1_55em2")
+texture_progress = ExtResource("2_ujfn7")
+
+[node name="Arrows" type="Node2D" parent="."]
+position = Vector2(1462.5, 775.5)
+scale = Vector2(7.5, 7.5)
+
+[node name="Down" type="TextureButton" parent="Arrows"]
+offset_left = -8.0
+offset_right = 8.0
+offset_bottom = 16.0
+texture_normal = ExtResource("3_m1h2j")
+
+[node name="Up" type="TextureButton" parent="Arrows"]
+offset_left = -8.0
+offset_top = -18.0
+offset_right = 8.0
+offset_bottom = -2.0
+texture_normal = ExtResource("4_kyysl")
+
+[node name="Right" type="TextureButton" parent="Arrows"]
+offset_left = 10.0
+offset_right = 26.0
+offset_bottom = 16.0
+texture_normal = ExtResource("5_xv5qh")
+
+[node name="Left" type="TextureButton" parent="Arrows"]
+offset_left = -26.0
+offset_right = -10.0
+offset_bottom = 16.0
+texture_normal = ExtResource("6_sff56")
+
+[node name="ScoreLabel" type="Label" parent="."]
+self_modulate = Color(0.18039216, 0.13333334, 0.18431373, 1)
+offset_top = 30.0
+offset_right = 384.0
+offset_bottom = 46.0
+scale = Vector2(4.5, 4.5)
+text = "Score: 100"
+label_settings = SubResource("LabelSettings_gmdtp")
+horizontal_alignment = 1
+vertical_alignment = 1

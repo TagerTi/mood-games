@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk27xyjw87bv0"]
+
+[ext_resource type="Script" uid="uid://4yuvxvb2uoyw" path="res://Objects/following_object.gd" id="1_wv8rd"]
+[ext_resource type="Texture2D" uid="uid://c2mouawtt58yl" path="res://Assets/Entities/Bug.png" id="2_7clbk"]
+
+[sub_resource type="Curve" id="Curve_7clbk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5023112, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="FollowingObject" type="Area2D" groups=["dieable"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_wv8rd")
+texture = ExtResource("2_7clbk")
+particle_color = Color(0.12591085, 0.12591085, 0.12591082, 1)
+is_hostile = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_7clbk")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+
+[node name="DeadParticle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.9
+direction = Vector2(0, -1)
+spread = 25.0
+gravity = Vector2(0, 150)
+initial_velocity_min = 25.0
+initial_velocity_max = 100.0
+scale_amount_min = 1.5
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_7clbk")
+color = Color(0.12591085, 0.12591085, 0.12591082, 1)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 1)
