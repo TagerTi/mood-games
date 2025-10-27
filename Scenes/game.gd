@@ -21,7 +21,7 @@ func set_page(number: int):
 			page_nodes[p].position.y = 0
 			page_nodes[p].visible = true
 			if number == 1:
-				$Others/BackTimer.start(20)
+				$Others/BackTimer.start(60)
 				$ReasonChoice/Label.text = [
 					"What worries you?", 
 					"What's bothering you?", 
