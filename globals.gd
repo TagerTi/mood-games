@@ -1,6 +1,8 @@
 extends Node
 
-var is_started = false
+var is_started = false:
+	set(value):
+		is_started = value
 
 enum Games{
 	weather,
@@ -37,6 +39,16 @@ var highscores: = {
 }
 
 func _ready() -> void:
+	# Wechsel zu Fullscreen
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+	# Web-spezifischer Kram
+	if OS.get_name() == "Web" and Engine.has_singleton("JavaScript"):
+		var js = Engine.get_singleton("JavaScript")
+		js.eval("""
+			if (document.documentElement.requestFullscreen)
+				document.documentElement.requestFullscreen();
+		""", true)
 	load_highscores()
 
 func save_highscores() -> void:
