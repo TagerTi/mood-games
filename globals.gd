@@ -1,5 +1,7 @@
 extends Node
 
+var is_started = false
+
 enum Games{
 	weather,
 	bugs,

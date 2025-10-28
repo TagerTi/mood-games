@@ -11,7 +11,9 @@ func _ready() -> void:
 	set_page(0)
 	
 	#get_window().mode = Window.MODE_FULLSCREEN
-	_on_fullscreen_pressed()
+	if !Globals.is_started:
+		_on_fullscreen_pressed()
+		Globals.is_started = true
 	
 	$ReasonChoice/MoodOptions/Bug/Control/Score.text = str(Globals.highscores[Globals.Games.bugs])
 	$ReasonChoice/MoodOptions/Rain/Control/Score.text = str(Globals.highscores[Globals.Games.weather])
