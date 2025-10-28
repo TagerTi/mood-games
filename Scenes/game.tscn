@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ttn2pvgurcq7"]
+[gd_scene load_steps=16 format=3 uid="uid://ttn2pvgurcq7"]
 
 [ext_resource type="Script" uid="uid://d058d843gq2is" path="res://Scenes/game.gd" id="1_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://rck37djdp18n" path="res://Assets/UI/MainMenu/SmileyGood.png" id="2_1l0tm"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bjtaebqjbt3vt" path="res://Assets/UI/MainMenu/NoDesire.png" id="10_rku1e"]
 [ext_resource type="Texture2D" uid="uid://dbntucoq2evj1" path="res://Assets/UI/MainMenu/Traffic.png" id="11_o5yvi"]
 [ext_resource type="Texture2D" uid="uid://347uk6xte0uj" path="res://Assets/UI/MainMenu/Back.png" id="12_rku1e"]
+[ext_resource type="Texture2D" uid="uid://umtp5ab2c5ym" path="res://Assets/UI/MainMenu/FullScreenButton.png" id="14_1phco"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rku1e"]
 line_spacing = -4.0
@@ -110,6 +111,23 @@ offset_top = 76.0
 offset_right = 384.0
 offset_bottom = 92.0
 text = "Wie geht es dir heute?"
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fullscreen" type="TextureButton" parent="MoodChoice"]
+offset_left = 291.0
+offset_top = 38.0
+offset_right = 323.0
+offset_bottom = 70.0
+texture_normal = ExtResource("14_1phco")
+
+[node name="ReturnIn" type="Label" parent="MoodChoice/Fullscreen"]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 51.0
+offset_bottom = 49.0
+scale = Vector2(0.65, 0.65)
 label_settings = SubResource("LabelSettings_rku1e")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -304,13 +322,32 @@ label_settings = SubResource("LabelSettings_rku1e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Fullscreen" type="TextureButton" parent="ReasonChoice"]
+offset_left = 291.0
+offset_top = 38.0
+offset_right = 323.0
+offset_bottom = 70.0
+texture_normal = ExtResource("14_1phco")
+
+[node name="ReturnIn" type="Label" parent="ReasonChoice/Fullscreen"]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 51.0
+offset_bottom = 49.0
+scale = Vector2(0.65, 0.65)
+label_settings = SubResource("LabelSettings_rku1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="Others/BackTimer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="MoodChoice/MoodOptions/Best/BestButton" to="." method="_best_pressed"]
 [connection signal="pressed" from="MoodChoice/MoodOptions/Good/GoodButton" to="." method="_good_pressed"]
 [connection signal="pressed" from="MoodChoice/MoodOptions/Mid/MidButton" to="." method="_mid_pressed"]
 [connection signal="pressed" from="MoodChoice/MoodOptions/Bad/BadButton" to="." method="_bad_pressed"]
 [connection signal="pressed" from="MoodChoice/MoodOptions/Worse/WorseButton" to="." method="_worse_pressed"]
+[connection signal="pressed" from="MoodChoice/Fullscreen" to="." method="_on_fullscreen_pressed"]
 [connection signal="pressed" from="ReasonChoice/MoodOptions/Rain/Control/RainButton" to="." method="_rain_pressed"]
 [connection signal="pressed" from="ReasonChoice/MoodOptions/Bug/Control/BugButton" to="." method="_on_bug_button_pressed"]
 [connection signal="pressed" from="ReasonChoice/MoodOptions/Traffic/Control/TrafficButton" to="." method="_on_traffic_button_pressed"]
 [connection signal="pressed" from="ReasonChoice/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ReasonChoice/Fullscreen" to="." method="_on_fullscreen_pressed"]

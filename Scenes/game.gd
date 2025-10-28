@@ -10,6 +10,9 @@ func _ready() -> void:
 	page_nodes.remove_at(0)
 	set_page(0)
 	
+	#get_window().mode = Window.MODE_FULLSCREEN
+	_on_fullscreen_pressed()
+	
 	$ReasonChoice/MoodOptions/Bug/Control/Score.text = str(Globals.highscores[Globals.Games.bugs])
 	$ReasonChoice/MoodOptions/Rain/Control/Score.text = str(Globals.highscores[Globals.Games.weather])
 	$ReasonChoice/MoodOptions/NoDesire/Control/Score.text = str(Globals.highscores[Globals.Games.noDesire])
@@ -83,3 +86,26 @@ func _on_traffic_button_pressed() -> void:
 	Globals.current_game = Globals.Games.traffic
 	Globals.current_game_path = "res://Scenes/traffic_game.tscn"
 	get_tree().change_scene_to_file("res://Scenes/traffic_game.tscn")
+
+
+func _on_fullscreen_pressed() -> void:
+	var current_mode := DisplayServer.window_get_mode()
+	
+	if current_mode == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		# Wechsel zu Fenster-Modus
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		
+		# Optional: Fenstergröße oder Position zurücksetzen, falls nötig
+		#DisplayServer.window_set_size(Vector2i(1280, 720))
+		# DisplayServer.window_set_position(Vector2i(100, 100))
+	else:
+		# Wechsel zu Fullscreen
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+		# Web-spezifischer Kram
+		if OS.get_name() == "Web" and Engine.has_singleton("JavaScript"):
+			var js = Engine.get_singleton("JavaScript")
+			js.eval("""
+				if (document.documentElement.requestFullscreen)
+					document.documentElement.requestFullscreen();
+			""", true)
