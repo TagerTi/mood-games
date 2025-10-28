@@ -23,24 +23,25 @@ zoom = Vector2(3, 3)
 
 [node name="LevPlayer" parent="." instance=ExtResource("2_7qork")]
 position = Vector2(288, 162)
+motion_mode = 0
 
 [node name="GroundTemp" type="StaticBody2D" parent="."]
 position = Vector2(1, 217)
 
 [node name="HitboxDown" type="CollisionShape2D" parent="GroundTemp"]
-position = Vector2(288, 116)
+position = Vector2(288, 115)
 shape = SubResource("RectangleShape2D_r60nn")
 
 [node name="HitboxUp" type="CollisionShape2D" parent="GroundTemp"]
-position = Vector2(292, -228)
+position = Vector2(292, -226)
 shape = SubResource("RectangleShape2D_r60nn")
 
 [node name="HitboxLeft" type="CollisionShape2D" parent="GroundTemp"]
-position = Vector2(-11, -53.5)
+position = Vector2(-10, -53.5)
 shape = SubResource("RectangleShape2D_ryiwa")
 
 [node name="HitboxRight" type="CollisionShape2D" parent="GroundTemp"]
-position = Vector2(585, -55)
+position = Vector2(584, -55)
 shape = SubResource("RectangleShape2D_ryiwa")
 
 [node name="Bugs" type="Node2D" parent="."]

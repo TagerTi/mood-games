@@ -18,6 +18,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
+	
+	
 	# var dirx = Input.get_axis("move_left","move_right")
 	# var diry = Input.get_axis("move_up","move_down")
 
